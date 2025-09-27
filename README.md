@@ -1,13 +1,13 @@
-# 葬送のフリーレン Online - 時の彼方の旅路 ✨
+# Frieren Online - Journey Beyond Time ✨
 
 <div align="center">
 
-「人を知るための旅路。その終わりには、何が待っているんだろうね。」
+*"A journey to understand people. I wonder what awaits at the end of it."*
 
 </div>
 
 <p align="center">
-  <strong>『葬送のフリーレン』の世界観を舞台にした、ブラウザで遊べるファンメイドRPGプロトタイプ</strong>
+  <strong>A fan-made browser RPG prototype inspired by the world of <i>Frieren: Beyond Journey’s End</i></strong>
 </p>
 
 <p align="center">
@@ -18,54 +18,44 @@
 
 ---
 
-## 🎮 ゲーム概要 (About The Game)
+## 🎮 About The Game
 
-『葬送のフリーレン Online - 時の彼方の旅路』は、  
-HTML / CSS / JavaScript で構築されたシンプルなブラウザRPGです。  
+**Frieren Online - Journey Beyond Time** is a simple browser RPG built with **HTML / CSS / JavaScript**.  
 
-プレイヤーは **「エルフの魔法使い」** となり、広大な世界を探索しながら戦いや出会いを通して旅を進めます。
-
----
-
-## ✨ 主な機能 (Features)
-
-- **キャラクター作成**: エルフの魔法使いとして旅に出発。  
-- **広大な世界**: 森、雪原、砂漠、忘れ去られた王都などを自由に探索。  
-- **ターン制バトル**: 「ゾルトラーク」などの魔法を駆使して魔物と戦闘。  
-- **町と村**: 宿屋で休み、武器屋・鍛冶屋で装備を整える。  
-- **宝探し**: 隠された宝箱や「ミミック」の罠に挑戦。  
-- **クエスト**: 大陸魔法協会の試験や冒険の目的をクエストログで管理。  
-- **宿命のボス戦**: 「断頭台のアウラ」との一騎打ち。特殊魔法「アゼリューゼ」を攻略せよ。  
-- **BGM切替**: タイトル、探索、戦闘、ボス戦で雰囲気を彩るBGM。  
+You play as an **elven mage**, exploring vast lands, encountering allies and enemies, and advancing through an endless journey.  
 
 ---
 
-## 🕹️ 遊び方 (How To Play)
+## ✨ Features
 
-- **移動**: 方向キー (↑ ↓ ← →)  
-- **戦闘**: コマンドを選択して魔法を発動  
-- **探索**: マップを自由に歩き、宝箱や村を発見  
-
----
-
-## 🚀 プレイ方法 (Play Now)
-
-以下のリンクからすぐに遊べます👇
-
-👉 [葬送のフリーレン Online - 時の彼方の旅路](https://imshota1009.github.io/Freiren-the-Funeral)
+- **Character Creation**: Begin your adventure as an elven mage.  
+- **Expansive World**: Explore forests, snowy plains, deserts, and forgotten capitals.  
+- **Turn-Based Battles**: Use magic such as *Zoltraak* to fight monsters.  
+- **Towns & Villages**: Rest at inns and upgrade equipment at shops and forges.  
+- **Treasure Hunting**: Discover hidden chests—or fall into *mimic* traps.  
+- **Quest Log**: Track trials from the Continental Magic Association and other missions.  
+- **Boss Fights**: Challenge fate itself against *Aura the Guillotine* and her unique magic, *Auserlösen*.  
+- **Dynamic BGM**: Unique tracks for title screen, exploration, battles, and boss fights.  
 
 ---
 
-## 🛠️ 使用技術 (Technologies Used)
+## 🕹️ How To Play
 
-- **HTML5**: 基本構造  
-- **CSS3**: UIとスタイリング  
-- **JavaScript (ES6+)**: ゲームロジック全般  
+- **Movement**: Arrow keys (↑ ↓ ← →)  
+- **Combat**: Select commands to cast spells  
+- **Exploration**: Walk across maps to find villages, treasures, and secrets  
 
 ---
 
-## ⚠️ 注意 (Disclaimer)
+## 🛠️ Technologies Used
 
-このゲームは**非公式のファンメイド作品**です。  
-『葬送のフリーレン』の公式コンテンツとは一切関係ありません。  
+- **HTML5** – Core structure  
+- **CSS3** – UI & styling  
+- **JavaScript (ES6+)** – Game logic  
 
+---
+
+## ⚠️ Disclaimer
+
+This is an **unofficial fan-made project**.  
+It has no affiliation with the official *Frieren: Beyond Journey’s End* content or its creators.  
