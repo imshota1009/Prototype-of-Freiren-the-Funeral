@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>葬送のフリーレン Online - 時の彼方の旅路</title>
+    <title>Frieren: Beyond Journey's End Online - A Journey Beyond Time</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
@@ -15,32 +15,32 @@
         <!-- ===== Splash Screen ===== -->
         <div id="splash-screen" class="screen active">
             <div class="splash-box">
-                <h1>Sousou no Frieren</h1>
-                <p class="subtitle">Online - 時の彼方の旅路 -</p>
-                <button id="start-creation-button" class="game-button">旅の始まり</button>
+                <h1>Frieren: Beyond Journey's End</h1>
+                <p class="subtitle">Online - A Journey Beyond Time -</p>
+                <button id="start-creation-button" class="game-button">Begin Journey</button>
             </div>
         </div>
 
         <!-- ===== Character Creation Screen ===== -->
         <div id="character-creation-screen" class="screen">
              <div class="creation-container">
-                <div class="creation-preview">
-                    <img id="character-image-preview" src="frieren_character.png" alt="Character Preview">
-                </div>
-                <div class="creation-form-container">
-                    <h2>キャラクター作成</h2>
-                    <div class="creation-form">
-                        <div class="form-group">
-                            <label for="player-name">名前</label>
-                            <input type="text" id="player-name" value="フリーレン">
-                        </div>
-                        <div class="form-group">
-                            <p class="race-info">種族: エルフ</p>
-                        </div>
-                        <p class="class-info">職業: 魔法使い</p>
-                        <button id="complete-creation-button" class="game-button">決定</button>
-                    </div>
-                </div>
+                 <div class="creation-preview">
+                     <img id="character-image-preview" src="frieren_character.png" alt="Character Preview">
+                 </div>
+                 <div class="creation-form-container">
+                     <h2>Character Creation</h2>
+                     <div class="creation-form">
+                         <div class="form-group">
+                             <label for="player-name">Name</label>
+                             <input type="text" id="player-name" value="Frieren">
+                         </div>
+                         <div class="form-group">
+                             <p class="race-info">Race: Elf</p>
+                         </div>
+                         <p class="class-info">Class: Mage</p>
+                         <button id="complete-creation-button" class="game-button">Confirm</button>
+                     </div>
+                 </div>
             </div>
         </div>
 
@@ -74,10 +74,10 @@
                     <div class="panel-decoration bottom-right"></div>
                 </div>
                 <div id="main-menu-buttons">
-                    <button id="status-button" class="game-button">ステータス</button>
-                    <button id="inventory-button" class="game-button">持ち物</button>
-                    <button id="spellbook-button" class="game-button">魔法</button>
-                    <button id="quest-log-button" class="game-button">クエスト</button>
+                    <button id="status-button" class="game-button">Status</button>
+                    <button id="inventory-button" class="game-button">Inventory</button>
+                    <button id="spellbook-button" class="game-button">Spells</button>
+                    <button id="quest-log-button" class="game-button">Quests</button>
                 </div>
             </div>
         </div>
@@ -109,84 +109,84 @@
         <div id="town-screen" class="screen menu-screen">
             <h2 id="town-name"></h2>
             <div class="town-facilities">
-                <button id="inn-button" class="game-button">宿屋 (10G)</button>
-                <button id="shop-button" class="game-button">武器屋</button>
-                <button id="blacksmith-button" class="game-button">鍛冶屋</button>
-                <button id="association-button" class="game-button" style="display: none;">魔法協会</button>
-                <button id="town-exit-button" class="game-button">町から出る</button>
+                <button id="inn-button" class="game-button">Inn (10G)</button>
+                <button id="shop-button" class="game-button">Weapon Shop</button>
+                <button id="blacksmith-button" class="game-button">Blacksmith</button>
+                <button id="association-button" class="game-button" style="display: none;">Mage Association</button>
+                <button id="town-exit-button" class="game-button">Leave Town</button>
             </div>
         </div>
         
         <!-- ===== Status, Inventory, etc. Screens ===== -->
         <div id="status-screen" class="screen menu-screen">
-            <h2>ステータス</h2>
+            <h2>Status</h2>
             <div id="status-grid"></div>
-            <div class="menu-actions"><button id="status-close-button" class="game-button">閉じる</button></div>
+            <div class="menu-actions"><button id="status-close-button" class="game-button">Close</button></div>
         </div>
         
         <div id="inventory-screen" class="screen menu-screen">
-            <h2>持ち物</h2>
+            <h2>Inventory</h2>
             <p id="gold-display"></p>
             <ul id="inventory-list"></ul>
-            <div class="menu-actions"><button id="inventory-close-button" class="game-button">閉じる</button></div>
+            <div class="menu-actions"><button id="inventory-close-button" class="game-button">Close</button></div>
         </div>
 
         <div id="spellbook-screen" class="screen menu-screen">
-            <h2>魔法書</h2>
+            <h2>Spellbook</h2>
             <ul id="spellbook-list"></ul>
-            <div class="menu-actions"><button id="spellbook-close-button" class="game-button">閉じる</button></div>
+            <div class="menu-actions"><button id="spellbook-close-button" class="game-button">Close</button></div>
         </div>
 
         <div id="quest-log-screen" class="screen menu-screen">
-            <h2>クエストログ</h2>
+            <h2>Quest Log</h2>
             <ul id="quest-list"></ul>
-            <div class="menu-actions"><button id="quest-log-close-button" class="game-button">閉じる</button></div>
+            <div class="menu-actions"><button id="quest-log-close-button" class="game-button">Close</button></div>
         </div>
 
         <!-- ===== Magic Association Screen ===== -->
         <div id="magic-association-screen" class="screen menu-screen">
-            <h2>大陸魔法協会支部</h2>
+            <h2>Continental Magic Association</h2>
             <div class="dialogue-panel ui-panel">
                 <p id="examiner-dialogue"></p>
             </div>
             <div class="menu-actions">
-                <button id="exam-button" class="game-button">昇級試験について聞く</button>
-                <button id="association-exit-button" class="game-button">協会から出る</button>
+                <button id="exam-button" class="game-button">Ask about Rank-Up Exam</button>
+                <button id="association-exit-button" class="game-button">Leave Association</button>
             </div>
         </div>
 
         <!-- ===== Modals ===== -->
         <div id="shop-modal" class="modal">
             <div class="modal-content ui-panel">
-                <h2>武器屋</h2>
+                <h2>Weapon Shop</h2>
                 <div class="shop-sections">
                     <div class="shop-buy">
-                        <h3>買う</h3>
+                        <h3>Buy</h3>
                         <ul id="shop-buy-list"></ul>
                     </div>
                     <div class="shop-sell">
-                        <h3>売る</h3>
+                        <h3>Sell</h3>
                         <ul id="shop-sell-list"></ul>
                     </div>
                 </div>
-                <button id="shop-close-button" class="game-button">店を出る</button>
+                <button id="shop-close-button" class="game-button">Leave Shop</button>
             </div>
         </div>
 
         <div id="blacksmith-modal" class="modal">
             <div class="modal-content ui-panel">
-                <h2>鍛冶屋</h2>
-                <p>ようこそ。杖を強化してやろう。</p>
+                <h2>Blacksmith</h2>
+                <p>Welcome. I can upgrade your staff.</p>
                 <div id="blacksmith-info"></div>
-                <button id="upgrade-button" class="game-button">強化する</button>
-                <button id="blacksmith-close-button" class="game-button">やめておく</button>
+                <button id="upgrade-button" class="game-button">Upgrade</button>
+                <button id="blacksmith-close-button" class="game-button">Never mind</button>
             </div>
         </div>
         
         <div id="dialogue-modal" class="modal">
             <div class="modal-content ui-panel dialogue-panel">
                 <p id="dialogue-text"></p>
-                <button id="dialogue-close-button" class="game-button">閉じる</button>
+                <button id="dialogue-close-button" class="game-button">Close</button>
             </div>
         </div>
 
@@ -202,6 +202,7 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
