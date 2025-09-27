@@ -5,13 +5,13 @@
 // f: Forest, p: Plains, s: Snow, d: Desert, R: Ruins, g: grass_village, k: Fog
 // T: Town, C: Cave, A: Association, V: Village Entrance
 // w: Wall, ' ': Floor, B: Chest, H: House
-// Portals: S, M, D(esert), U(p), o(D)own, X (Snow, Forest, Desert, Up, Down, Boss Exit)
+// Portals: S, M, D(esert), U(p), o(D)own, X (Snow, Forest, Desert, Up, Down, Boss Exit), E(xit)
 // NPCs: 1, 2, 3... / Special: A(ura)
 // ==================================================================
 
 const mapDatabase = {
     "northernForest": {
-        name: "北の森",
+        name: "Northern Forest",
         terrainType: "forest",
         layout: [
             ['S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S'],
@@ -36,17 +36,17 @@ const mapDatabase = {
             'D': { targetMap: 'southernDesert', targetX: 7, targetY: 1 },
             'C': { targetMap: 'goblinCave', targetX: 1, targetY: 13 },
             'V': { targetMap: 'villageOutskirts', targetX: 7, targetY: 13 },
-            'T': { isTown: true, name: "聖都シュトラール", facilities: ["inn", "shop", "blacksmith"] }
+            'T': { isTown: true, name: "Holy Capital Schtrall", facilities: ["inn", "shop", "blacksmith"] }
         },
         chests: {
-            '1-4':  { opened: false, content: { type: 'item', name: '薬草', quantity: 2 } },
-            '3-10': { opened: false, content: { type: 'spell', name: '火の魔法' } },
+            '1-4':  { opened: false, content: { type: 'item', name: 'Medicinal Herb', quantity: 2 } },
+            '3-10': { opened: false, content: { type: 'spell', name: 'Fire Magic' } },
             '6-2':  { opened: false, content: { type: 'mimic' } },
-            '10-11':{ opened: false, content: { type: 'item', name: '金貨', quantity: 150 } },
+            '10-11':{ opened: false, content: { type: 'item', name: 'Gold Coins', quantity: 150 } },
         }
     },
     "villageOutskirts": {
-        name: "リーゲル峡谷の村",
+        name: "Village of Riegel Canyon",
         terrainType: "village",
         layout: [
             ['f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f'],
@@ -67,17 +67,17 @@ const mapDatabase = {
         ],
         portals: {
             'M': { targetMap: 'northernForest', targetX: 11, targetY: 2 },
-            'T': { isTown: true, name: "村の広場", facilities: ["inn"] }
+            'T': { isTown: true, name: "Village Square", facilities: ["inn"] }
         },
         chests: {},
         npcs: {
-            '5-6': { id: 'villager1', sprite: '👨‍🌾', dialog: "最近、森の奥で物騒な音がするんだ。気をつけてくだされ。" },
-            '8-12': { id: 'villager2', sprite: '👩‍🍳', dialog: "あら、旅の方かい？この村にはこれといって名物はないけど、ゆっくりしていくといいよ。" },
-            '12-7': { id: 'villager3', sprite: '👴', dialog: "わしらの若い頃は、もっと魔物も少なかったんじゃがのう…。" }
+            '5-6': { id: 'villager1', sprite: '👨‍🌾', dialog: "Lately, I've been hearing some disturbing noises from deep in the forest. Please be careful." },
+            '8-12': { id: 'villager2', sprite: '👩‍🍳', dialog: "Oh, are you a traveler? This village doesn't have any specialties to speak of, but feel free to rest here for a while." },
+            '12-7': { id: 'villager3', sprite: '👴', dialog: "Back in my younger days, there were far fewer monsters..." }
         }
     },
     "southernDesert": {
-        name: "南部砂漠",
+        name: "Southern Desert",
         terrainType: "desert",
         layout: [
             ['M', 'M', 'M', 'M', 'M', 'M', 'M', 'M', 'M', 'M', 'M', 'M', 'M', 'M', 'M'],
@@ -98,22 +98,22 @@ const mapDatabase = {
         ],
         portals: {
             'M': { targetMap: 'northernForest', targetX: 7, targetY: 13 },
-            'U': { targetMap: 'ruinedCapital', targetX: 7, targetY: 1 }, // ★修正点: 王都への到着地点を上部に変更
-            'A': { isTown: true, name: "魔法都市オイサースト", facilities: ["inn", "association"] }
+            'U': { targetMap: 'ruinedCapital', targetX: 7, targetY: 1 },
+            'A': { isTown: true, name: "Magic City Oisoest", facilities: ["inn", "association"] }
         },
         chests: {
-            '1-13': { opened: false, content: { type: 'item', name: '解毒薬', quantity: 3 } },
+            '1-13': { opened: false, content: { type: 'item', name: 'Antidote', quantity: 3 } },
             '3-5':  { opened: false, content: { type: 'mimic' } },
-            '8-1':  { opened: false, content: { type: 'item', name: '金貨', quantity: 300 } },
-            '11-7': { opened: false, content: { type: 'spell', name: '砂嵐' } },
+            '8-1':  { opened: false, content: { type: 'item', name: 'Gold Coins', quantity: 300 } },
+            '11-7': { opened: false, content: { type: 'spell', name: 'Sandstorm' } },
         }
     },
     "ruinedCapital": {
-        name: "忘れ去られた王都",
+        name: "The Forgotten Royal Capital",
         terrainType: "ruins",
-        startPosition: { x: 7, y: 1 }, // ★修正点: スタート地点を上部に変更
+        startPosition: { x: 7, y: 1 },
         layout: [
-            ['k', 'k', 'k', 'k', 'k', 'k', 'k', 'D', 'k', 'k', 'k', 'k', 'k', 'k', 'k'], // ★修正点: 砂漠への出口を上部に設置
+            ['k', 'k', 'k', 'k', 'k', 'k', 'k', 'D', 'k', 'k', 'k', 'k', 'k', 'k', 'k'],
             ['k', 'R', 'R', 'R', 'R', 'R', 'R', 'R', 'R', 'R', 'R', 'R', 'R', 'R', 'k'],
             ['k', 'R', 'R', 'R', 'R', 'R', 'R', 'R', 'B', 'R', 'R', 'R', 'R', 'R', 'k'],
             ['k', 'R', 'R', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'R', 'R', 'R', 'k'],
@@ -131,17 +131,17 @@ const mapDatabase = {
         ],
         portals: {
             'X': { targetMap: 'demonLordsCastleF1', targetX: 7, targetY: 13 },
-            'D': { targetMap: 'southernDesert', targetX: 7, targetY: 13 } // ★修正点: 出口の定義
+            'D': { targetMap: 'southernDesert', targetX: 7, targetY: 13 }
         },
         chests: {
-            '2-8': { opened: false, content: { type: 'item', name: 'エーテル', quantity: 1 } },
-            '5-7': { opened: false, content: { type: 'spell', name: 'ゴーレムを破壊する魔法' } },
+            '2-8': { opened: false, content: { type: 'item', name: 'Ether', quantity: 1 } },
+            '5-7': { opened: false, content: { type: 'spell', name: 'Golem-Destroying Magic' } },
             '8-6': { opened: false, content: { type: 'mimic' } },
-            '11-3':{ opened: false, content: { type: 'item', name: '古代のコイン', quantity: 5 } },
+            '11-3':{ opened: false, content: { type: 'item', name: 'Ancient Coin', quantity: 5 } },
         }
     },
     "demonLordsCastleF1": {
-        name: "旧魔王城 1階",
+        name: "Old Demon Lord's Castle 1F",
         terrainType: "castle",
         layout: [
             ['w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'],
@@ -165,13 +165,13 @@ const mapDatabase = {
             'U': { targetMap: 'demonLordsCastleF2', targetX: 7, targetY: 7 }
         },
         chests: {
-            '3-7': { opened: false, content: { type: 'item', name: 'エーテル', quantity: 1 } },
-            '10-7':{ opened: false, content: { type: 'item', name: '金貨', quantity: 1000 } },
+            '3-7': { opened: false, content: { type: 'item', name: 'Ether', quantity: 1 } },
+            '10-7':{ opened: false, content: { type: 'item', name: 'Gold Coins', quantity: 1000 } },
         },
         enemyCount: 3
     },
     "demonLordsCastleF2": {
-        name: "旧魔王城 2階",
+        name: "Old Demon Lord's Castle 2F",
         terrainType: "castle",
         layout: [
             ['w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'],
@@ -196,12 +196,12 @@ const mapDatabase = {
         },
         chests: {
             '4-13': { opened: false, content: { type: 'mimic' } },
-            '10-1': { opened: false, content: { type: 'item', name: 'エーテル', quantity: 2 } },
+            '10-1': { opened: false, content: { type: 'item', name: 'Ether', quantity: 2 } },
         },
         enemyCount: 3
     },
     "demonLordsCastleF3": {
-        name: "旧魔王城 3階",
+        name: "Old Demon Lord's Castle 3F",
         terrainType: "castle",
         layout: [
             ['w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'],
@@ -213,7 +213,6 @@ const mapDatabase = {
             ['w', ' ', 'w', ' ', 'w', ' ', 'w', 'w', ' ', 'w', ' ', ' ', 'w', ' ', 'w'],
             ['w', ' ', 'o', ' ', 'w', ' ', 'w', 'U', ' ', 'w', 'w', ' ', 'w', ' ', 'w'],
             ['w', ' ', 'w', ' ', 'w', ' ', 'w', 'w', ' ', 'w', ' ', ' ', 'w', ' ', 'w'],
-
             ['w', ' ', 'w', ' ', 'w', ' ', ' ', ' ', ' ', 'w', ' ', 'w', 'w', ' ', 'w'],
             ['w', ' ', 'w', ' ', 'w', 'w', 'w', 'w', 'w', 'w', ' ', 'w', ' ', ' ', 'w'],
             ['w', ' ', 'w', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'w', ' ', 'w', 'w'],
@@ -226,13 +225,13 @@ const mapDatabase = {
             'o': { targetMap: 'demonLordsCastleF2', targetX: 2, targetY: 7 }
         },
         chests: {
-            '1-13': { opened: false, content: { type: 'spell', name: '聖なる光' } },
-            '12-12': { opened: false, content: { type: 'item', name: '金貨', quantity: 2000 } },
+            '1-13': { opened: false, content: { type: 'spell', name: 'Holy Light' } },
+            '12-12': { opened: false, content: { type: 'item', name: 'Gold Coins', quantity: 2000 } },
         },
         enemyCount: 4
     },
     "demonLordsCastleF4": {
-        name: "旧魔王城 4階",
+        name: "Old Demon Lord's Castle 4F",
         terrainType: "castle",
         layout: [
             ['w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'],
@@ -264,7 +263,7 @@ const mapDatabase = {
         enemyCount: 5
     },
     "demonLordsCastleF5": {
-        name: "旧魔王城 玉座の間",
+        name: "Old Demon Lord's Castle - Throne Room",
         terrainType: "boss",
         layout: [
             ['w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'],
@@ -288,12 +287,12 @@ const mapDatabase = {
         },
         chests: {},
         npcs: {
-            '2-7': { id: 'aura', sprite: '😈', dialog: "「よく来たな、エルフ。ヒンメルはもういない。ここがお前の墓標となる」" }
+            '2-7': { id: 'aura', sprite: '😈', dialog: "\"You've done well to come this far, elf. Himmel is no longer here. This place will be your grave.\"" }
         },
         enemyCount: 0
     },
     "goblinCave": {
-        name: "ゴブリンの洞窟",
+        name: "Goblin Cave",
         terrainType: "cave",
         layout: [
             ['w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'],
@@ -314,14 +313,14 @@ const mapDatabase = {
         ],
         portals: { 'E': { targetMap: 'northernForest', targetX: 12, targetY: 8 } },
         chests: {
-            '1-6':  { opened: false, content: { type: 'item', name: '金貨', quantity: 50 } },
-            '5-3':  { opened: false, content: { type: 'item', name: '薬草', quantity: 3 } },
+            '1-6':  { opened: false, content: { type: 'item', name: 'Gold Coins', quantity: 50 } },
+            '5-3':  { opened: false, content: { type: 'item', name: 'Medicinal Herb', quantity: 3 } },
             '8-7':  { opened: false, content: { type: 'mimic' } },
-            '11-10':{ opened: false, content: { type: 'spell', name: '明かりの魔法' } },
+            '11-10':{ opened: false, content: { type: 'spell', name: 'Light Magic' } },
         }
     },
     "snowyPlains": {
-        name: "雪深き辺境",
+        name: "Snowy Frontier",
         terrainType: "snow",
         layout: [
             ['f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f'],
@@ -343,17 +342,17 @@ const mapDatabase = {
         portals: {
             'M': { targetMap: 'northernForest', targetX: 7, targetY: 1 },
             'C': { targetMap: 'iceCave', targetX: 7, targetY: 13 },
-            'T': { isTown: true, name: "辺境の村", facilities: ["inn", "shop"] }
+            'T': { isTown: true, name: "Frontier Village", facilities: ["inn", "shop"] }
         },
         chests: {
-            '2-11': { opened: false, content: { type: 'item', name: '暖かい外套', quantity: 1 } },
-            '5-4':  { opened: false, content: { type: 'spell', name: '氷の矢' } },
-            '8-2':  { opened: false, content: { type: 'item', name: '金貨', quantity: 200 } },
+            '2-11': { opened: false, content: { type: 'item', name: 'Warm Cloak', quantity: 1 } },
+            '5-4':  { opened: false, content: { type: 'spell', name: 'Ice Arrow' } },
+            '8-2':  { opened: false, content: { type: 'item', name: 'Gold Coins', quantity: 200 } },
             '11-9': { opened: false, content: { type: 'mimic' } },
         }
     },
     "iceCave": {
-        name: "氷結洞窟",
+        name: "Ice Cave",
         terrainType: "snow",
         layout: [
             ['w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'],
@@ -374,13 +373,15 @@ const mapDatabase = {
         ],
         portals: { 'E': { targetMap: 'snowyPlains', targetX: 12, targetY: 2 } },
         chests: {
-            '1-13': { opened: false, content: { type: 'item', name: 'エーテル', quantity: 2 } },
+            '1-13': { opened: false, content: { type: 'item', name: 'Ether', quantity: 2 } },
             '5-8':  { opened: false, content: { type: 'mimic' } },
-            '9-6':  { opened: false, content: { type: 'item', name: '金貨', quantity: 500 } },
-            '12-11':{ opened: false, content: { type: 'spell', name: '聖なる光' } },
+            '9-6':  { opened: false, content: { type: 'item', name: 'Gold Coins', quantity: 500 } },
+            '12-11':{ opened: false, content: { type: 'spell', name: 'Holy Light' } },
         }
     }
 };
+
+
 
 
 
