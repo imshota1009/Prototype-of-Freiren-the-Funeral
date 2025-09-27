@@ -13,92 +13,92 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Databases ---
     const itemDatabase = {
-        "薬草": { type: "item", sellPrice: 5 },
-        "魔石": { type: "item", sellPrice: 10 },
-        "解毒薬": { type: "item", sellPrice: 8 },
-        "古代のコイン": { type: "item", sellPrice: 50 },
-        "暖かい外套": { type: "item", sellPrice: 25 },
-        "エーテル": { type: "item", sellPrice: 100 },
+        "Herb": { type: "item", sellPrice: 5 },
+        "Magic Stone": { type: "item", sellPrice: 10 },
+        "Antidote": { type: "item", sellPrice: 8 },
+        "Ancient Coin": { type: "item", sellPrice: 50 },
+        "Warm Cloak": { type: "item", sellPrice: 25 },
+        "Ether": { type: "item", sellPrice: 100 },
     };
 
     const weaponDatabase = {
-        "見習いの杖": { type: "weapon", atk: 5, price: 50 },
-        "樫の杖": { type: "weapon", atk: 12, price: 200 },
-        "魔導士の杖": { type: "weapon", atk: 25, price: 1000 },
+        "Apprentice's Staff": { type: "weapon", atk: 5, price: 50 },
+        "Oak Staff": { type: "weapon", atk: 12, price: 200 },
+        "Mage's Staff": { type: "weapon", atk: 25, price: 1000 },
     };
     
     const enemyDatabase = {
         forest: [
-            { name: "スライム", sprite: "💧", stats: { hp: 40, atk: 10, def: 5 }, exp: 25, gold: 10, drops: [{ name: "魔石", chance: 0.5 }] },
-            { name: "レッドスライム", sprite: "🩸", stats: { hp: 70, atk: 10, def: 5 }, exp: 75, gold: 150, drops: [{ name: "魔石", chance: 0.5 }] },
-            { name: "ワイバーン", sprite: "🐲", stats: { hp: 150, atk: 25, def: 5 }, exp: 250, gold: 120, drops: [{ name: "魔石", chance: 0.5 }] },
-            { name: "ゴブリン", sprite: "🧌", stats: { hp: 60, atk: 14, def: 8 }, exp: 40, gold: 20, drops: [{ name: "薬草", chance: 0.3 }] }
+            { name: "Slime", sprite: "💧", stats: { hp: 40, atk: 10, def: 5 }, exp: 25, gold: 10, drops: [{ name: "Magic Stone", chance: 0.5 }] },
+            { name: "Red Slime", sprite: "🩸", stats: { hp: 70, atk: 10, def: 5 }, exp: 75, gold: 150, drops: [{ name: "Magic Stone", chance: 0.5 }] },
+            { name: "Wyvern", sprite: "🐲", stats: { hp: 150, atk: 25, def: 5 }, exp: 250, gold: 120, drops: [{ name: "Magic Stone", chance: 0.5 }] },
+            { name: "Goblin", sprite: "🧌", stats: { hp: 60, atk: 14, def: 8 }, exp: 40, gold: 20, drops: [{ name: "Herb", chance: 0.3 }] }
         ],
         plains: [
-            { name: "コウモリ", sprite: "🦇", stats: { hp: 30, atk: 12, def: 3 }, exp: 20, gold: 8, drops: [] }
+            { name: "Bat", sprite: "🦇", stats: { hp: 30, atk: 12, def: 3 }, exp: 20, gold: 8, drops: [] }
         ],
         cave: [
-            { name: "大コウモリ", sprite: "🦇", stats: { hp: 70, atk: 15, def: 5 }, exp: 50, gold: 25, drops: [] },
-            { name: "ゴブリン兵", sprite: "🧌", stats: { hp: 80, atk: 18, def: 10 }, exp: 60, gold: 30, drops: [{ name: "魔石", chance: 0.8 }] }
+            { name: "Giant Bat", sprite: "🦇", stats: { hp: 70, atk: 15, def: 5 }, exp: 50, gold: 25, drops: [] },
+            { name: "Goblin Soldier", sprite: "🧌", stats: { hp: 80, atk: 18, def: 10 }, exp: 60, gold: 30, drops: [{ name: "Magic Stone", chance: 0.8 }] }
         ],
         snow: [
-            { name: "氷狼", sprite: "🐺", stats: { hp: 70, atk: 16, def: 6 }, exp: 55, gold: 28, drops: [] },
-            { name: "フロストゴブリン", sprite: "🧌", stats: { hp: 90, atk: 20, def: 12 }, exp: 70, gold: 40, drops: [{ name: "魔石", chance: 0.9 }] }
+            { name: "Ice Wolf", sprite: "🐺", stats: { hp: 70, atk: 16, def: 6 }, exp: 55, gold: 28, drops: [] },
+            { name: "Frost Goblin", sprite: "🧌", stats: { hp: 90, atk: 20, def: 12 }, exp: 70, gold: 40, drops: [{ name: "Magic Stone", chance: 0.9 }] }
         ],
         desert: [
-            { name: "サンドワーム", sprite: "🐛", stats: { hp: 100, atk: 22, def: 15 }, exp: 80, gold: 50, drops: [] },
-            { name: "サソリ", sprite: "🦂", stats: { hp: 80, atk: 25, def: 10 }, exp: 75, gold: 45, drops: [{ name: "解毒薬", chance: 0.5 }] }
+            { name: "Sandworm", sprite: "🐛", stats: { hp: 100, atk: 22, def: 15 }, exp: 80, gold: 50, drops: [] },
+            { name: "Scorpion", sprite: "🦂", stats: { hp: 80, atk: 25, def: 10 }, exp: 75, gold: 45, drops: [{ name: "Antidote", chance: 0.5 }] }
         ],
         ruins: [
-            { name: "ストーンゴーレム", sprite: "🗿", stats: { hp: 200, atk: 30, def: 25 }, exp: 150, gold: 100, drops: [{ name: "古代のコイン", chance: 0.2 }] },
-            { name: "亡霊", sprite: "👻", stats: { hp: 120, atk: 35, def: 15 }, exp: 120, gold: 80, drops: [] }
+            { name: "Stone Golem", sprite: "🗿", stats: { hp: 200, atk: 30, def: 25 }, exp: 150, gold: 100, drops: [{ name: "Ancient Coin", chance: 0.2 }] },
+            { name: "Spectre", sprite: "👻", stats: { hp: 120, atk: 35, def: 15 }, exp: 120, gold: 80, drops: [] }
         ],
         castle: [
-            { name: "操られた衛兵", sprite: "💂", stats: { hp: 180, atk: 40, def: 25 }, exp: 120, gold: 80, drops: [{ name: "魔石", chance: 0.2 }] }
+            { name: "Controlled Guard", sprite: "💂", stats: { hp: 180, atk: 40, def: 25 }, exp: 120, gold: 80, drops: [{ name: "Magic Stone", chance: 0.2 }] }
         ],
         mimic: [
-             { name: "ミミック", sprite: "🎁", stats: { hp: 150, atk: 25, def: 20 }, exp: 100, gold: 150, drops: [{ name: "金貨", quantity: 100, chance: 1.0 }] }
+             { name: "Mimic", sprite: "🎁", stats: { hp: 150, atk: 25, def: 20 }, exp: 100, gold: 150, drops: [{ name: "Gold Coins", quantity: 100, chance: 1.0 }] }
         ]
     };
 
     const bossDatabase = {
         "aura": {
-            name: "断頭台のアウラ",
+            name: "Aura the Guillotiner",
             sprite: "😈",
             image: "aura_battle.png",
             stats: { hp: 2000, mp: 1000, atk: 40, def: 30 },
             exp: 100, gold: 500,
-            special: "アゼリューゼ",
+            special: "Auserlese",
             actions: [
-                { name: "断頭吏の斬撃", type: "physical", power: 1.1 },
-                { name: "闇の波動", type: "magic", power: 2.3 },
-                { name: "魂の葬送", type: "magic", power: 2.5 },
-                { name: "精神支配の鞭", type: "physical", power: 1.2 }
+                { name: "Executioner's Slash", type: "physical", power: 1.1 },
+                { name: "Dark Wave", type: "magic", power: 2.3 },
+                { name: "Soul Burial", type: "magic", power: 2.5 },
+                { name: "Mind Control Whip", type: "physical", power: 1.2 }
             ]
         }
     };
 
     const spellDatabase = {
-        "ゾルトラーク": { type: "damage", cost: 5, power: 2.2, name: "ゾルトラーク" },
-        "ジュドラジルム": { type: "damage", cost: 30, power: 9.0, name: "ジュドラジルム" },
-        "ヴォルザンベル": { type: "damage", cost: 25, power: 6.5, name: "ヴォルザンベル" },
-        "宝箱判別魔法": { type: "utility", cost: 10, effect: "appraise_chest", name: "宝箱判別魔法" },
-        "花畑を出す魔法": { type: "utility", cost: 20, effect: "create_flowers", name: "花畑を出す魔法" },
-        "火の魔法": { type: "damage", cost: 15, power: 2.5, name: "火の魔法" },
-        "回復魔法": { type: "heal", cost: 10, power: 30, name: "回復魔法" },
-        "氷の矢": { type: "damage", cost: 12, power: 2.0, name: "氷の矢" },
-        "聖なる光": { type: "heal", cost: 25, power: 80, name: "聖なる光" },
-        "砂嵐": { type: "damage", cost: 20, power: 3.0, name: "砂嵐" },
-        "ゴーレムを破壊する魔法": { type: "damage", cost: 28, power: 3.8, name: "ゴーレムを破壊する魔法" },
-        "明かりの魔法": { type: "utility", cost: 5, effect: "light", name: "明かりの魔法" },
+        "Zoltraak": { type: "damage", cost: 5, power: 2.2, name: "Zoltraak" },
+        "Juddrajim": { type: "damage", cost: 30, power: 9.0, name: "Juddrajim" },
+        "Volzambel": { type: "damage", cost: 25, power: 6.5, name: "Volzambel" },
+        "Chest Appraisal Magic": { type: "utility", cost: 10, effect: "appraise_chest", name: "Chest Appraisal Magic" },
+        "Flower Garden Magic": { type: "utility", cost: 20, effect: "create_flowers", name: "Flower Garden Magic" },
+        "Fire Magic": { type: "damage", cost: 15, power: 2.5, name: "Fire Magic" },
+        "Healing Magic": { type: "heal", cost: 10, power: 30, name: "Healing Magic" },
+        "Ice Arrow": { type: "damage", cost: 12, power: 2.0, name: "Ice Arrow" },
+        "Holy Light": { type: "heal", cost: 25, power: 80, name: "Holy Light" },
+        "Sandstorm": { type: "damage", cost: 20, power: 3.0, name: "Sandstorm" },
+        "Golem Destruction Magic": { type: "damage", cost: 28, power: 3.8, name: "Golem Destruction Magic" },
+        "Light Magic": { type: "utility", cost: 5, effect: "light", name: "Light Magic" },
     };
 
     const questDatabase = {
         "exam1": {
-            title: "一級魔法使い試験",
-            description: "試験官: 「最初の試験だ。雪原に生息するフロストゴブリンを3体討伐してきなさい。」",
-            objective: { type: "kill", target: "フロストゴブリン", required: 3 },
-            reward: { type: "spell", name: "砂嵐" }
+            title: "First-Class Mage Exam",
+            description: "Examiner: \"This is the first test. Go defeat 3 Frost Goblins that inhabit the snowfields.\"",
+            objective: { type: "kill", target: "Frost Goblin", required: 3 },
+            reward: { type: "spell", name: "Sandstorm" }
         }
     };
 
@@ -187,17 +187,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('complete-creation-button').addEventListener('click', () => {
-        const name = document.getElementById('player-name').value || "フリーレン";
+        const name = document.getElementById('player-name').value || "Frieren";
         player = {
             name, race: 'elf', pClass: 'mage',
             level: 1, exp: 0, nextLevelExp: 100,
             x: 0, y: 0, currentMap: 'northernForest',
             gold: 50,
             equipment: {
-                weapon: { name: "見習いの杖", atk: 5, level: 1 }
+                weapon: { name: "Apprentice's Staff", atk: 5, level: 1 }
             },
-            inventory: [{ name: "薬草", quantity: 10 }],
-            spells: ["ゾルトラーク", "ジュドラジルム", "ヴォルザンベル", "宝箱判別魔法", "花畑を出す魔法", "回復魔法"],
+            inventory: [{ name: "Herb", quantity: 10 }],
+            spells: ["Zoltraak", "Juddrajim", "Volzambel", "Chest Appraisal Magic", "Flower Garden Magic", "Healing Magic"],
             quests: [],
             stats: { hp: 0, maxHp: 0, mp: 0, maxMp: 0, baseAtk: 0, def: 0, spd: 0, luck: 0 }
         };
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function initializeGame() {
         loadMap(player.currentMap);
         updateHUD();
-        addLog(`${player.name}の旅が始まった。`, 'system');
+        addLog(`The journey of ${player.name} has begun.`, 'system');
         showScreen('main-game-screen');
     }
 
@@ -248,15 +248,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 const tileCode = mapData.layout[y][x];
                 let type = 'floor';
                  if ('fpT'.includes(tileCode)) type = {f: 'forest', p: 'plains', T: 'town'}[tileCode];
-                if ('CwE'.includes(tileCode)) type = {C: 'cave_entrance', w: 'wall', E: 'cave_exit'}[tileCode];
-                if ('sS'.includes(tileCode)) type = {s: 'snow', S: 'snow_portal'}[tileCode];
-                if ('dAo'.includes(tileCode)) type = {d: 'desert', A: 'association_city', o: 'oasis'}[tileCode];
-                if ('RX'.includes(tileCode)) type = {R: 'ruins', X: 'boss_portal'}[tileCode];
-                if ('MDUo'.includes(tileCode)) type = {M: 'forest_portal', o: 'stairs_down', U: 'stairs_up', D: 'ruins_portal_down'}[tileCode];
-                if (tileCode === 'B') type = 'chest';
-                if (tileCode === 'V') type = 'village_entrance';
-                if ('gH'.includes(tileCode)) type = {g: 'grass_village', H: 'house'}[tileCode];
-                if (tileCode === 'k') type = 'fog';
+                 if ('CwE'.includes(tileCode)) type = {C: 'cave_entrance', w: 'wall', E: 'cave_exit'}[tileCode];
+                 if ('sS'.includes(tileCode)) type = {s: 'snow', S: 'snow_portal'}[tileCode];
+                 if ('dAo'.includes(tileCode)) type = {d: 'desert', A: 'association_city', o: 'oasis'}[tileCode];
+                 if ('RX'.includes(tileCode)) type = {R: 'ruins', X: 'boss_portal'}[tileCode];
+                 if ('MDUo'.includes(tileCode)) type = {M: 'forest_portal', o: 'stairs_down', U: 'stairs_up', D: 'ruins_portal_down'}[tileCode];
+                 if (tileCode === 'B') type = 'chest';
+                 if (tileCode === 'V') type = 'village_entrance';
+                 if ('gH'.includes(tileCode)) type = {g: 'grass_village', H: 'house'}[tileCode];
+                 if (tileCode === 'k') type = 'fog';
                 
                 gameMap[y][x] = { type };
                 const tileEl = document.createElement('div');
@@ -395,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const targetTile = gameMap[newY] && gameMap[newY][newX];
             if (targetTile && targetTile.type === 'fog') {
-                addLog('霧が濃くて出られないようだ...', 'system');
+                addLog('The fog is too thick to proceed...', 'system');
                 return;
             }
 
@@ -430,7 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (portal.isTown) {
                 showScreen('town-screen');
             } else {
-                addLog('別のエリアに移動した。', 'system');
+                addLog('Moved to another area.', 'system');
                 loadMap(portal.targetMap, portal.targetX, portal.targetY);
             }
         } else if (tileCode === 'B') {
@@ -471,16 +471,16 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('status-grid').innerHTML = `
             <span>HP</span><span>${player.stats.hp} / ${player.stats.maxHp}</span>
             <span>MP</span><span>${player.stats.mp} / ${player.stats.maxMp}</span>
-            <span>攻撃力</span><span>${getTotalAtk()} (基礎:${player.stats.baseAtk} + 杖:${weapon.atk})</span>
-            <span>防御力</span><span>${player.stats.def}</span>
-            <span>素早さ</span><span>${player.stats.spd}</span>
-            <span>運</span><span>${player.stats.luck}</span>
-            <span>装備中の杖</span><span>${weapon.name} +${weapon.level}</span>
+            <span>Attack</span><span>${getTotalAtk()} (Base:${player.stats.baseAtk} + Staff:${weapon.atk})</span>
+            <span>Defense</span><span>${player.stats.def}</span>
+            <span>Speed</span><span>${player.stats.spd}</span>
+            <span>Luck</span><span>${player.stats.luck}</span>
+            <span>Equipped Staff</span><span>${weapon.name} +${weapon.level}</span>
         `;
     }
 
     function updateInventoryScreen() {
-        document.getElementById('gold-display').textContent = `所持金: ${player.gold} G`;
+        document.getElementById('gold-display').textContent = `Gold: ${player.gold} G`;
         const list = document.getElementById('inventory-list');
         list.innerHTML = '';
         player.inventory.forEach(item => {
@@ -488,7 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
             li.textContent = `${item.name} x ${item.quantity}`;
             list.appendChild(li);
         });
-        if (player.inventory.length === 0) list.innerHTML = '<li>何も持っていない</li>';
+        if (player.inventory.length === 0) list.innerHTML = '<li>You have nothing.</li>';
     }
     
     function updateSpellbookScreen() {
@@ -500,7 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
             li.innerHTML = `<span>${spell.name} (MP: ${spell.cost})</span>`;
             if (spell.type === 'utility') {
                 const useButton = document.createElement('button');
-                useButton.textContent = '使用';
+                useButton.textContent = 'Use';
                 useButton.className = 'game-button small-button';
                 useButton.disabled = player.stats.mp < spell.cost;
                 useButton.onclick = () => castUtilitySpell(spellName);
@@ -514,7 +514,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const list = document.getElementById('quest-list');
         list.innerHTML = '';
         if (player.quests.length === 0) {
-            list.innerHTML = '<li>現在受けているクエストはありません。</li>';
+            list.innerHTML = '<li>No active quests.</li>';
             return;
         }
 
@@ -524,7 +524,7 @@ document.addEventListener('DOMContentLoaded', () => {
             li.innerHTML = `
                 <strong>${questData.title}</strong>
                 <p>${questData.description}</p>
-                <p>進捗: ${questState.progress} / ${questData.objective.required}</p>
+                <p>Progress: ${questState.progress} / ${questData.objective.required}</p>
             `;
             list.appendChild(li);
         });
@@ -559,7 +559,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         currentEnemy.hp = currentEnemy.stats.hp;
-        battleLog = [`${currentEnemy.name}が現れた！`];
+        battleLog = [`${currentEnemy.name} appeared!`];
         updateBattleScreen();
         showScreen('battle-screen');
     }
@@ -602,7 +602,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const runButton = document.createElement('button');
         runButton.className = 'game-button';
-        runButton.textContent = '逃げる';
+        runButton.textContent = 'Run';
         runButton.disabled = !!currentEnemy.special; // Can't run from bosses
         runButton.onclick = () => playerAction('run');
         actionsContainer.appendChild(runButton);
@@ -610,16 +610,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const playerAction = (action) => {
         if (action === 'run') {
-            battleLog.push(`${player.name}は逃げようと試みた。`);
+            battleLog.push(`${player.name} tried to escape.`);
             if (Math.random() < 0.25) {
-                battleLog.push('うまく逃げ切れた！');
+                battleLog.push('Successfully escaped!');
                 updateBattleScreen();
                 setTimeout(() => {
                     showScreen('main-game-screen');
-                    addLog('戦闘から逃げ出した。', 'system');
+                    addLog('Fled from battle.', 'system');
                 }, 1500);
             } else {
-                battleLog.push('しかし、回り込まれてしまった！');
+                battleLog.push('But the path was blocked!');
                 document.getElementById('battle-actions').innerHTML = '';
                 setTimeout(enemyAction, 1000);
                 updateBattleScreen();
@@ -633,11 +633,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (spell.type === 'damage') {
             const damage = Math.max(1, Math.floor(getTotalAtk() * spell.power) - currentEnemy.stats.def);
             currentEnemy.hp = Math.max(0, currentEnemy.hp - damage);
-            battleLog.push(`${player.name}は${spell.name}を唱えた！ ${damage}のダメージ。`);
+            battleLog.push(`${player.name} cast ${spell.name}! ${damage} damage.`);
         } else if (spell.type === 'heal') {
             const healAmount = spell.power;
             player.stats.hp = Math.min(player.stats.maxHp, player.stats.hp + healAmount);
-            battleLog.push(`${player.name}は${spell.name}を唱えた！ HPが${healAmount}回復した。`);
+            battleLog.push(`${player.name} cast ${spell.name}! Healed for ${healAmount} HP.`);
         }
 
         if (currentEnemy.hp <= 0) {
@@ -651,25 +651,25 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function enemyAction() {
-        if(currentEnemy.special === "アゼリューゼ" && currentEnemy.hp <= 100) {
-            battleLog.push(`${currentEnemy.name}は服従させる魔法(アゼリューゼ)を唱えた！`);
-            battleLog.push("服従の天秤が、両者の魔力量を測る…！");
+        if(currentEnemy.special === "Auserlese" && currentEnemy.hp <= 100) {
+            battleLog.push(`${currentEnemy.name} casts Auserlese, the spell of obedience!`);
+            battleLog.push("The Scales of Obedience weigh the mana of both fighters...!");
             updateBattleScreen();
 
             setTimeout(() => {
                 if (player.stats.mp > currentEnemy.stats.mp) {
-                    battleLog.push(`「私の魂を天秤を載せたな」`);
-                    battleLog.push(`「お前は私の魔力を見誤ったんだ」`);
-                    battleLog.push(`「ふ、ふざけるな..私は500年以上生きた大魔族だ」`);
-                    battleLog.push(`「アウラ、お前の前にいるのは、千年以上生きた魔法使いだ」`);
-                    battleLog.push(`天秤は${player.name}に傾いた！`);
-                    battleLog.push(`「アウラ、自害しろ」`);
-                    battleLog.push(`「馬鹿な…この私が…」`);
+                    battleLog.push(`"You dared to place my soul upon your scales."`);
+                    battleLog.push(`"You have misjudged my mana."`);
+                    battleLog.push(`"D-don't be ridiculous... I am a great demon who has lived for over 500 years."`);
+                    battleLog.push(`"Aura, before you stands a mage who has lived for over a thousand years."`);
+                    battleLog.push(`The scales tip in favor of ${player.name}!`);
+                    battleLog.push(`"Aura, kill yourself."`);
+                    battleLog.push(`"Impossible... that I would..."`);
                     currentEnemy.hp = 0;
                     winBattle();
                 } else {
-                    battleLog.push(`天秤は${currentEnemy.name}に傾いた！`);
-                    battleLog.push("アウラはフリーレンを自害させた。");
+                    battleLog.push(`The scales tip in favor of ${currentEnemy.name}!`);
+                    battleLog.push("Aura forced Frieren to take her own life.");
                     player.stats.hp = 0;
                     loseBattle();
                 }
@@ -678,7 +678,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         let damage = 0;
-        let actionName = "攻撃";
+        let actionName = "Attack";
 
         if (currentEnemy.actions && currentEnemy.actions.length > 0) {
             const action = currentEnemy.actions[Math.floor(Math.random() * currentEnemy.actions.length)];
@@ -689,7 +689,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         player.stats.hp = Math.max(0, player.stats.hp - damage);
-        battleLog.push(`${currentEnemy.name}の${actionName}！ ${damage}のダメージを受けた。`);
+        battleLog.push(`${currentEnemy.name}'s ${actionName}! Took ${damage} damage.`);
         updateHUD();
         if (player.stats.hp <= 0) {
             loseBattle();
@@ -699,15 +699,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function winBattle() {
-        addLog(`${currentEnemy.name}を倒した！`, 'system');
-        addLog(`${currentEnemy.exp}の経験値と${currentEnemy.gold}Gを手に入れた。`, 'system');
+        addLog(`Defeated ${currentEnemy.name}!`, 'system');
+        addLog(`Gained ${currentEnemy.exp} EXP and ${currentEnemy.gold}G.`, 'system');
         player.exp += currentEnemy.exp;
         player.gold += currentEnemy.gold;
         
         player.quests.forEach(quest => {
             if (quest.objective.type === 'kill' && currentEnemy.name === quest.objective.target) {
                 quest.progress++;
-                addLog(`クエスト進捗: ${quest.progress}/${quest.objective.required}`, 'system');
+                addLog(`Quest Progress: ${quest.progress}/${quest.objective.required}`, 'system');
             }
         });
 
@@ -715,7 +715,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentEnemy.drops.forEach(drop => {
                 if (Math.random() < drop.chance) {
                     addItemToInventory(drop.name, drop.quantity || 1);
-                    addLog(`${drop.name}を手に入れた！`, 'item');
+                    addLog(`Obtained ${drop.name}!`, 'item');
                 }
             });
         }
@@ -731,13 +731,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function loseBattle() {
-        battleLog.push('目の前が真っ暗になった...');
+        battleLog.push('Everything went dark...');
         updateBattleScreen();
 
         setTimeout(() => {
             player.stats.hp = player.stats.maxHp;
             player.stats.mp = player.stats.maxMp;
-            addLog('しかし、不思議な力で完全に回復した！', 'system');
+            addLog('But a mysterious power fully restored you!', 'system');
             updateHUD();
             showScreen('main-game-screen');
         }, 2000);
@@ -752,10 +752,10 @@ document.addEventListener('DOMContentLoaded', () => {
             player.gold -= cost;
             player.stats.hp = player.stats.maxHp;
             player.stats.mp = player.stats.maxMp;
-            addLog(`宿屋に泊まり、HPとMPが全回復した。`, 'system');
+            addLog(`Stayed at the inn. HP and MP fully restored.`, 'system');
             updateHUD();
         } else {
-            addLog('お金が足りないようだ。', 'system');
+            addLog('Not enough gold.', 'system');
         }
     }
     
@@ -773,7 +773,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const li = document.createElement('li');
             li.innerHTML = `<span>${key} (ATK ${weapon.atk}) - ${weapon.price}G</span>`;
             const buyButton = document.createElement('button');
-            buyButton.textContent = '買う';
+            buyButton.textContent = 'Buy';
             buyButton.className = 'game-button small-button';
             buyButton.disabled = player.gold < weapon.price;
             buyButton.onclick = () => buyItem(key, 'weapon');
@@ -791,13 +791,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const li = document.createElement('li');
             li.innerHTML = `<span>${item.name} x${item.quantity} - ${itemData.sellPrice}G</span>`;
             const sellButton = document.createElement('button');
-            sellButton.textContent = '売る';
+            sellButton.textContent = 'Sell';
             sellButton.className = 'game-button small-button';
             sellButton.onclick = () => sellItem(item.name);
             li.appendChild(sellButton);
             sellList.appendChild(li);
         });
-        if(player.inventory.length === 0) sellList.innerHTML = '<li>売るものがない</li>';
+        if(player.inventory.length === 0) sellList.innerHTML = '<li>Nothing to sell.</li>';
     }
 
     function buyItem(itemName, itemType) {
@@ -806,7 +806,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (player.gold >= weapon.price) {
                 player.gold -= weapon.price;
                 player.equipment.weapon = { name: itemName, atk: weapon.atk, level: 1};
-                addLog(`${itemName}を購入し、装備した。`, 'item');
+                addLog(`Purchased and equipped ${itemName}.`, 'item');
                 updateShop();
             }
         }
@@ -821,7 +821,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (itemInInventory.quantity <= 0) {
                 player.inventory = player.inventory.filter(i => i.name !== itemName);
             }
-            addLog(`${itemName}を売却した。`, 'item');
+            addLog(`Sold ${itemName}.`, 'item');
             updateShop();
         }
     }
@@ -837,28 +837,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const materialCost = weapon.level;
         const info = document.getElementById('blacksmith-info');
         info.innerHTML = `
-            <p>現在の杖: ${weapon.name} +${weapon.level} (ATK: ${weapon.atk})</p>
-            <p>次のレベル: +${weapon.level + 1}</p>
-            <p>費用: ${upgradeCost}G</p>
-            <p>必要な素材: 魔石 x${materialCost}</p>
+            <p>Current Staff: ${weapon.name} +${weapon.level} (ATK: ${weapon.atk})</p>
+            <p>Next Level: +${weapon.level + 1}</p>
+            <p>Cost: ${upgradeCost}G</p>
+            <p>Required Materials: Magic Stone x${materialCost}</p>
         `;
         document.getElementById('upgrade-button').onclick = () => upgradeWeapon(upgradeCost, materialCost);
     }
     
     function upgradeWeapon(goldCost, materialCost) {
-        const material = player.inventory.find(i => i.name === '魔石');
+        const material = player.inventory.find(i => i.name === 'Magic Stone');
         if (player.gold >= goldCost && material && material.quantity >= materialCost) {
             player.gold -= goldCost;
             material.quantity -= materialCost;
             if (material.quantity <= 0) {
-                player.inventory = player.inventory.filter(i => i.name !== '魔石');
+                player.inventory = player.inventory.filter(i => i.name !== 'Magic Stone');
             }
             player.equipment.weapon.level++;
             player.equipment.weapon.atk += Math.floor(weaponDatabase[player.equipment.weapon.name].atk * 0.2 * player.equipment.weapon.level);
-            addLog(`${player.equipment.weapon.name}を強化した！`, 'system');
+            addLog(`Upgraded ${player.equipment.weapon.name}!`, 'system');
             updateBlacksmith();
         } else {
-            addLog('お金か素材が足りないようだ。', 'system');
+            addLog('Not enough gold or materials.', 'system');
         }
     }
 
@@ -900,13 +900,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function openChest(y, x) {
         const chest = mapDatabase[player.currentMap].chests[`${y}-${x}`];
         if (!chest || chest.opened) {
-            addLog('この宝箱は空だ。', 'system');
+            addLog('This chest is empty.', 'system');
             return;
         };
         
         const content = chest.content;
         if (content.type === 'mimic') {
-            addLog('宝箱はミミックだった！', 'battle');
+            addLog('The chest was a Mimic!', 'battle');
             chest.opened = true;
             drawMap();
             startBattle('mimic');
@@ -915,15 +915,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         chest.opened = true;
         if (content.type === 'item') {
-            if (content.name === '金貨') {
+            if (content.name === 'Gold Coins') {
                 player.gold += content.quantity;
-                addLog(`宝箱を開けた！ ${content.quantity}Gを見つけた。`, 'item');
+                addLog(`Opened the chest! Found ${content.quantity}G.`, 'item');
             } else {
                 addItemToInventory(content.name, content.quantity);
-                addLog(`宝箱を開けた！ ${content.name}を${content.quantity}個見つけた。`, 'item');
+                addLog(`Opened the chest! Found ${content.name} x${content.quantity}.`, 'item');
             }
         } else if (content.type === 'spell') {
-            addLog(`宝箱を開けた！ 「${content.name}」の巻物を見つけた。`, 'item');
+            addLog(`Opened the chest! Found a scroll for "${content.name}".`, 'item');
             learnSpell(content.name);
         }
         
@@ -934,20 +934,20 @@ document.addEventListener('DOMContentLoaded', () => {
     function learnSpell(spellName) {
         if (!player.spells.includes(spellName)) {
             player.spells.push(spellName);
-            addLog(`新たな魔法、「${spellName}」を覚えた！`, 'system');
+            addLog(`Learned a new spell, "${spellName}"!`, 'system');
         } else {
-            addLog('すでにその魔法は知っているようだ。', 'system');
+            addLog('You already know that spell.', 'system');
         }
     }
     
     function castUtilitySpell(spellName) {
         const spell = spellDatabase[spellName];
         if (player.stats.mp < spell.cost) {
-            addLog("MPが足りない！", 'system');
+            addLog("Not enough MP!", 'system');
             return;
         }
         player.stats.mp -= spell.cost;
-        addLog(`${spell.name}を唱えた。`, 'system');
+        addLog(`Cast ${spell.name}.`, 'system');
 
         if (spell.effect === 'create_flowers') {
             temporaryMapChanges[`${player.y}-${player.x}`] = { type: 'flower_garden' };
@@ -955,7 +955,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (spell.effect === 'appraise_chest') {
             let foundChest = false;
-            const directions = [{ x: 0, y: -1, name: '北' }, { x: 0, y: 1, name: '南' }, { x: -1, y: 0, name: '西' }, { x: 1, y: 0, name: '東' }];
+            const directions = [{ x: 0, y: -1, name: 'North' }, { x: 0, y: 1, name: 'South' }, { x: -1, y: 0, name: 'West' }, { x: 1, y: 0, name: 'East' }];
 
             for (const dir of directions) {
                 const targetX = player.x + dir.x;
@@ -968,17 +968,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (tileCode === 'B') {
                         foundChest = true;
                         const chest = currentMapData.chests[`${targetY}-${targetX}`];
-                        if (!chest || chest.opened) addLog(`【${dir.name}】宝箱は空のようだ。`, "system");
+                        if (!chest || chest.opened) addLog(`[${dir.name}] The chest seems to be empty.`, "system");
                         else if (chest.content.type === 'mimic') {
-                            if (Math.random() < 0.99) addLog(`【${dir.name}】強大な魔力を感じる…これはミミックだ！`, "system");
-                            else addLog(`【${dir.name}】これは本物の宝箱のようだ…？`, "system");
+                            if (Math.random() < 0.99) addLog(`[${dir.name}] I feel a powerful magic... It's a Mimic!`, "system");
+                            else addLog(`[${dir.name}] This seems to be a real chest...?`, "system");
                         } else {
-                             addLog(`【${dir.name}】これは本物の宝箱のようだ。`, "system");
+                             addLog(`[${dir.name}] This seems to be a real chest.`, "system");
                         }
                     }
                 }
             }
-            if (!foundChest) addLog("周囲に鑑定できる宝箱はない。", "system");
+            if (!foundChest) addLog("There are no chests to appraise nearby.", "system");
         }
         
         updateHUD();
@@ -993,20 +993,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentQuest) {
             const questData = questDatabase[currentQuest.id];
             if (currentQuest.progress >= questData.objective.required) {
-                dialogue.textContent = "試験官: 「見事だ。約束通り、これを授けよう。」";
+                dialogue.textContent = "Examiner: \"Well done. As promised, I shall bestow this upon you.\"";
                 const reward = questData.reward;
                 if (reward.type === 'spell') {
                     learnSpell(reward.name);
                 }
                 player.quests = player.quests.filter(q => q.id !== 'exam1');
             } else {
-                dialogue.textContent = `${questData.description} (現在 ${currentQuest.progress}/${questData.objective.required} 体)`;
+                dialogue.textContent = `${questData.description} (Current: ${currentQuest.progress}/${questData.objective.required})`;
             }
         } else {
             const questData = questDatabase["exam1"];
             dialogue.textContent = questData.description;
             player.quests.push({ id: 'exam1', progress: 0, objective: questData.objective });
-            addLog("新たなクエストを受けた。", "system");
+            addLog("Accepted a new quest.", "system");
         }
     }
 
@@ -1028,7 +1028,7 @@ document.addEventListener('DOMContentLoaded', () => {
             player.stats.def += 10;
             player.stats.hp = player.stats.maxHp;
             player.stats.mp = player.stats.maxMp;
-            addLog(`レベルアップして${player.level}になった！`, 'system');
+            addLog(`Leveled up to ${player.level}!`, 'system');
         }
     }
     
@@ -1064,8 +1064,3 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('dialogue-close-button').addEventListener('click', () => showModal('dialogue-modal', false));
 
 });
-
-
-
-
-
